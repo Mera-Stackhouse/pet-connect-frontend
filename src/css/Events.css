@@ -1,0 +1,54 @@
+.EventsContainer {
+  margin: auto;
+  border: 1px solid purple;
+  width: 50%;
+}
+
+.EventsList {
+  margin: 1em;
+  align-items: left;
+  border: 1px solid purple;
+}
+
+.EventCard {
+  margin: auto;
+  border: 1px solid purple;
+}
+
+.EventTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid purple;
+}
+
+.users {
+  display: inline-block;
+  margin: 1em;
+  border: 1px solid purple;
+}
+
+.pets {
+  display: inline-block;
+  margin: 1em;
+  border: 1px solid purple;
+
+}
+
+.EventMap {
+  border: 1px solid purple;
+}
+
+.EventButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid purple;
+}
+
+.CenteredContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid purple;
+}
