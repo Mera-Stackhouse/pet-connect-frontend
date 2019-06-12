@@ -33,7 +33,7 @@ class NavBar extends Component {
         </Button>
         <Button basic color='violet' animated size='huge' as={Link} to='/friends'>
           <Button.Content visible>
-            <Icon name='user' />
+            <Icon name='users' />
           </Button.Content>
           <Button.Content hidden>
             Friends

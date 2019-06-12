@@ -21,16 +21,9 @@ class EventList extends Component {
 
   getDate = (string) => {
     const date = new Date(string)
-    const month = date.getMonth()
-    const day = date.getDay()
-    console.log('string', string)
-    console.log('date', date)
-    console.log('month', month)
-    console.log('day', day)
-    // const hours = date.getHours()
-    // const minutes = date.getMinutes()
-    return `${day}/${month}: `
-    //(day + '/' + month + ': ')
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    return `${month}/${day}: `
   }
 
   render(){
