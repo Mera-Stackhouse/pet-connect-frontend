@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
+
+//Semantic
+import 'semantic-ui-css/semantic.min.css'
 import { Button, Header, Icon, Modal, Form } from 'semantic-ui-react'
+
+const EVENT_URL = 'http://localhost:3000/api/v1/events/'
 
 class EventModal extends Component {
   state = {
-    newEvent: {}
+    newEvent: {},
+    open: false
   }
 
   componentDidMount() {
@@ -13,36 +19,52 @@ class EventModal extends Component {
   }
 
   changeForm = (ev) => {
-    console.log(ev)
-    // this.setState({
-    //   newEvent: {
-    //     ...this.props.event,
-    //     ev.target[name]: ev.target.value
-    //   }
-    // })
+    this.setState({
+      newEvent: {
+        ...this.props.event,
+        [ev.target.name]: ev.target.value
+      }
+    })
+  }
+
+  handleSubmit = () => {
+    this.setState({
+      open: false
+    })
+    this.props.handleFetch(this.state.newEvent)
+  }
+
+  toggle = () => {
+    this.setState({
+      open: !this.state.open
+    })
   }
 
   render() {
-    return <Modal trigger={<Button>Edit</Button>} closeIcon>
+    return <Modal
+              trigger={<Button onClick={this.toggle}>Edit</Button>}
+              open={this.state.open}
+              onClose={this.toggle}
+              closeIcon>
       <Header icon='edit' content='Edit this Event' />
       <Modal.Content>
         <Form>
           <Form.Field>
             <label>Event Name</label>
-            <input value={this.props.event.event_type} onChange={this.changeForm}/>
+            <input name='event_type' value={this.state.newEvent.event_type} onChange={this.changeForm} />
           </Form.Field>
           <Form.Field>
             <label>Time</label>
-            <input value={this.props.event.start_time} />
+            <input name='start_time' value={this.state.newEvent.start_time} onChange={this.changeForm} />
           </Form.Field>
           <Form.Field>
             <label>Location</label>
-            <input value={this.props.event.location} />
+            <input name='location' value={this.state.newEvent.location} onChange={this.changeForm} />
           </Form.Field>
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <Button>
+        <Button onClick={this.handleSubmit}>
           Submit
         </Button>
       </Modal.Actions>

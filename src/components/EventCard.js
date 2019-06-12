@@ -12,8 +12,6 @@ import EventModal from './EventModal'
 
 const API_KEY = `${process.env.REACT_APP_GOOGLE_MAPS_EMBED_API_KEY}`
 
-console.log(process.env)
-
 const EVENT_URL = 'http://localhost:3000/api/v1/events/'
 
 class EventCard extends Component {
@@ -31,6 +29,26 @@ class EventCard extends Component {
       }, () => console.log(this.state.event))
 
 
+    })
+  }
+
+  handleFetch = (newEvent) => {
+    console.log(newEvent)
+    fetch(EVENT_URL + newEvent.id, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        event: newEvent
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      this.setState({
+        event: newEvent
+      })
     })
   }
 
@@ -87,7 +105,7 @@ class EventCard extends Component {
       </iframe>
     </div><br />
     <div className='EventButton'>
-      <EventModal event={this.state.event} key={this.state.event.id}/>
+      <EventModal event={this.state.event} key={this.state.event.id} handleFetch={this.handleFetch}/>
     </div>
     </div>
   }
