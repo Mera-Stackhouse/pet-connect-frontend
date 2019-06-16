@@ -10,7 +10,9 @@ class FriendsContainer extends Component {
   }
 
   render(){
-    return 'FriendsContainer'
+    return <div className='FriendsContainer'>
+    hello
+    </div>
   }
 }
 

@@ -20,9 +20,9 @@ class Main extends Component {
 
   render(){
    return (
-    <>
-      <NavBar />
-      <Route path="/events" component={EventsContainer}/>
+     <>
+      <NavBar logout={this.props.logout}/>
+      <Route path="/events" render={() => <EventsContainer user={this.props.user} handleCreateEvent={this.props.handleCreateEvent}/>} />
       <Route path="/profile" component={ProfileContainer}/>
       <Route path="/friends" component={FriendsContainer}/>
     </>

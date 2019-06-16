@@ -6,13 +6,14 @@ import '../css/Events.css'
 //Components
 import EventList from './EventList'
 import EventCard from './EventCard'
+import CreateEventModal from './CreateEventModal'
 
 //Semantic
 import 'semantic-ui-css/semantic.min.css'
-import { Grid, Menu, Segment } from 'semantic-ui-react'
+import { Grid, Menu, Segment, Button } from 'semantic-ui-react'
 
 //Fetch URL
-const USER_URL = 'http://localhost:3000/api/v1/users/21'
+const USER_URL = 'http://localhost:3000/api/v1/users/'
 
 class EventsContainer extends Component {
 
@@ -20,17 +21,22 @@ class EventsContainer extends Component {
     super(props)
     this.state = {
       events: [],
-      activeItem: '',
-      user: 21
+      activeItem: ''
     }
-
-    fetch(USER_URL)
-    .then(resp => resp.json())
-    .then(data => {
-      this.setState({
-        events: data.user.events
-      }, () => console.log(this.state.events))
-    })
+    console.log('user in events', this.props.user)
+    //Using App state of the user now
+    // fetch(USER_URL + this.props.user.id, {
+    //   headers: {
+    //     'token': localStorage.getItem('token')
+    //   }
+    // })
+    // .then(resp => resp.json())
+    // .then(data => {
+    //   console.log('here', data)
+    // //   this.setState({
+    // //     events: data.user.events
+    // //   }, () => console.log(this.state.events))
+    // })
   }
 
   handleItemClick = (string) => {
@@ -42,11 +48,18 @@ class EventsContainer extends Component {
 
   render(){
     return <div className='EventsContainer'>
-
+      <div className='CenteredContainer'>
+        <CreateEventModal onClick={this.props.handleCreate} />
+      </div>
+      {this.props.user.events.length === 0 ?
+      <div className='CenteredContainer'>
+        <p>You don't have any events yet!</p>
+      </div>
+      :
       <Grid>
         <Grid.Column width={4}>
           <Menu fluid vertical tabular>
-            {this.state.events.map(e => {
+            {this.props.user.events.map(e => {
               return <EventList
                       key={e.id}
                       event={e}
@@ -59,11 +72,11 @@ class EventsContainer extends Component {
 
         <Grid.Column stretched width={12}>
           <Segment>
-            {this.state.events.map(e => {
+            {this.props.user.events.map(e => {
               return this.state.activeItem === e.id ?
               <EventCard
                 event={e}
-                user={this.state.user}
+                user={this.props.user}
                 key={e.id}
               />
               :
@@ -71,7 +84,7 @@ class EventsContainer extends Component {
             })}
           </Segment>
          </Grid.Column>
-      </Grid>
+      </Grid>}
     </div>
   }
 }

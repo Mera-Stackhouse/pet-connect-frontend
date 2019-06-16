@@ -1,0 +1,24 @@
+.ProfileContainer {
+  margin: auto;
+  border: 1px solid purple;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+.userContainer {
+  margin: auto;
+  border: 1px solid purple;
+  display: flex;
+  justify-content: center;
+
+}
+
+
+.petsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+  border: 1px solid purple;
+
+}

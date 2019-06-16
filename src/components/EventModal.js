@@ -21,7 +21,7 @@ class EventModal extends Component {
   changeForm = (ev) => {
     this.setState({
       newEvent: {
-        ...this.props.event,
+        ...this.state.newEvent,
         [ev.target.name]: ev.target.value
       }
     })

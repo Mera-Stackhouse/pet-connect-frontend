@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+    background-color: violet;
 }
 
 .App-logo {
@@ -35,3 +36,8 @@
 .main {
   margin: 1em;
 }
+
+/* .background {
+  background-color: #FFC857;
+  min-height: 100vh;
+} */

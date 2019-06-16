@@ -13,21 +13,40 @@ class App extends Component {
     super()
 
     this.state = {
-      loggedin: true
+      loggedIn: false,
+      user: null
     }
   }
-  // state = {
-  //   user: {
-  //     loggedin: true
-  //   }
-  // }
+
+  toggleLogIn = () => {
+    this.setState({
+      loggedIn: !this.state.loggedIn
+    })
+  }
+
+  setCurrentUser = (user) => {
+    this.setState({
+      user: user
+    }, () => console.log('user obj', this.state.user))
+  }
+
+  handleCreateEvent = () => {
+    console.log('here')
+  }
+
+  logout = () => {
+    this.toggleLogIn()
+    this.setCurrentUser(null)
+  }
 
   render() {
     return (
-        this.state.loggedin ?
-        <Main />
+        this.state.loggedIn ?
+        <div className='background'>
+          <Main user={this.state.user} handleCreateEvent={this.handleCreateEvent} logout={this.logout}/>
+        </div>
         :
-        <Login />
+        <Login setCurrentUser={this.setCurrentUser} toggleLogIn={this.toggleLogIn}/>
     )
   }
 }

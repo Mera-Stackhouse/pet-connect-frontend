@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 
+//Semantic
+import 'semantic-ui-css/semantic.min.css'
+import { Button } from 'semantic-ui-react'
+
 class Login extends Component {
 
   constructor(){
@@ -19,20 +23,21 @@ class Login extends Component {
 
   handleClick = (e) => {
     // Prevents page reload
-    e.preventDefault();
+    //e.preventDefault();
 
     // Initializes OAuth.io with API key
-    // Sign-up an account to get one
     window.OAuth.initialize('kHem6s_qmpzHUGwxcu5VHFz0orc');
 
-    // Popup Github and ask for authorization
+    // Popup Google and ask for authorization
     window.OAuth.popup('google').then((provider) => {
       localStorage.setItem('token', provider.id_token)
       // Prompts 'welcome' message with User's name on successful login
       // Check console logs for additional User info
       provider.me().then((data) => {
-        console.log("data: ", data);
-        localStorage.setItem('user', data)
+        console.log('name', data.raw.names[0].displayName);
+        localStorage.setItem('email', data.email)
+        localStorage.setItem('name', data.raw.names[0].displayName)
+        //image?
       });
 
     });
@@ -46,14 +51,24 @@ class Login extends Component {
      headers: {
        'Content-Type': 'application/json'
      },
-     body: JSON.stringify({token: localStorage.getItem('token')})
+     body: JSON.stringify({
+       token: localStorage.getItem('token'),
+       email: localStorage.getItem('email'),
+       name: localStorage.getItem('name')
+
+     })
+   })
+   .then(resp => resp.json())
+   .then(data => {
+     this.props.toggleLogIn()
+     this.props.setCurrentUser(data)
    })
  }
 
   render() {
-    return <a href="" onClick={this.handleClick.bind(this)}>
+    return <Button onClick={this.handleClick.bind(this)}>
               Sign in with Google
-           </a>;
+           </Button>;
   }
 
 }

@@ -47,6 +47,14 @@ class NavBar extends Component {
             Profile
           </Button.Content>
         </Button>
+        <Button basic color='violet' animated size='huge' onClick={this.props.logout}>
+          <Button.Content visible>
+            <Icon name='log out' />
+          </Button.Content>
+          <Button.Content hidden>
+            Log Out
+          </Button.Content>
+        </Button>
       </div>
       </div>
     )
