@@ -6,16 +6,83 @@ import { Button, Header, Icon, Modal, Form } from 'semantic-ui-react'
 
 import PetModal from './PetModal'
 
+import Select from "react-dropdown-select"
+
+//Fetch URL
+const USER_URL = 'http://localhost:3000/api/v1/users/'
+
 
 class CreateEventModal extends Component {
-  state = {
-    open: false
+  constructor() {
+    super()
+    this.state = {
+      open: false,
+      newEvent: {
+        users: [0],
+        pets: []
+      },
+      users: []
+    }
+
+    fetch(USER_URL)
+    .then(resp => resp.json())
+    .then(data => {
+      this.setState({
+        users: data
+      }, () => console.log(this.state.users))
+    })
   }
 
   toggle = () => {
     this.setState({
-      open: !this.state.open
+      open: !this.state.open,
+      newEvent: {}
     })
+  }
+
+  handleChange = (ev) => {
+    console.log('name', ev.target.name)
+    console.log('values', ev.target.values)
+    this.setState({
+      newEvent: {
+        ...this.state.newEvent,
+        [ev.target.name]: ev.target.values
+      }
+    })
+  }
+
+  pickUsers = (ev) => {
+    console.log(this.state.newEvent)
+    console.log('ev', ev)
+
+    if (ev[0]) {
+      this.setState({
+        newEvent: {
+          ...this.state.newEvent,
+          users: [...ev, this.props.user]
+        }
+      }, () => console.log(this.state.newEvent.users))
+    }
+  }
+
+  getPets = (pets) => {
+    this.setState({
+      newEvent: {
+        ...this.state.newEvent,
+        pets: pets
+      }
+    }, () => console.log('here with', this.state.newEvent.pets))
+  }
+
+  showPets = () => {
+    if (this.state.newEvent.pets) {
+      return <div>
+        {this.state.newEvent.pets.map(p => {
+          return <span>{p.name}</span>
+        })}
+      </div>
+    }
+    return
   }
 
   render(){
@@ -41,11 +108,26 @@ class CreateEventModal extends Component {
          </Form.Field>
          <Form.Field>
            <label>Users</label>
-           <input name='users'/>
+           <Select
+            options={this.state.users}
+            valueField='name'
+            keepSelectedInList={false}
+            name='users'
+            onChange={this.pickUsers}
+            noDataLabel="There are no users with that name"
+            addPlaceholder="Add another user..."
+            searchBy='name'
+            labelField='name'
+            multi={true}
+          />
+         </Form.Field>
+         <Form.Field>
+           <label>Pets</label>
+           {this.showPets()}
          </Form.Field>
          <br/>
        </Form>
-       <PetModal />
+       <PetModal users={this.state.newEvent.users} getPets={this.getPets}/>
      </Modal.Content>
      <Modal.Actions>
        <Button onClick={this.handleSubmit}>

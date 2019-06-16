@@ -49,7 +49,7 @@ class EventsContainer extends Component {
   render(){
     return <div className='EventsContainer'>
       <div className='CenteredContainer'>
-        <CreateEventModal onClick={this.props.handleCreate} />
+        <CreateEventModal onClick={this.props.handleCreate} user={this.props.user}/>
       </div>
       {this.props.user.events.length === 0 ?
       <div className='CenteredContainer'>
