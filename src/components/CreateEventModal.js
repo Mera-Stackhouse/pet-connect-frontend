@@ -21,7 +21,8 @@ class CreateEventModal extends Component {
         users: [0],
         pets: []
       },
-      users: []
+      users: [],
+      disabled: false
     }
 
     fetch(USER_URL)
@@ -36,19 +37,20 @@ class CreateEventModal extends Component {
   toggle = () => {
     this.setState({
       open: !this.state.open,
-      newEvent: {}
+      newEvent: {},
+      disabled: false
     })
   }
 
   handleChange = (ev) => {
     console.log('name', ev.target.name)
-    console.log('values', ev.target.values)
+    console.log('values', ev.target.value)
     this.setState({
       newEvent: {
         ...this.state.newEvent,
-        [ev.target.name]: ev.target.values
+        [ev.target.name]: ev.target.value
       }
-    })
+    }, () => console.log('whole event', this.state.newEvent))
   }
 
   pickUsers = (ev) => {
@@ -78,11 +80,37 @@ class CreateEventModal extends Component {
     if (this.state.newEvent.pets) {
       return <div>
         {this.state.newEvent.pets.map(p => {
-          return <span>{p.name}</span>
+          return <span>{p.name}<br/></span>
         })}
       </div>
     }
     return
+  }
+
+  setTime = (ev) => {
+    this.setState({
+      time: ev.target.value
+    })
+  }
+
+  setDate = (ev) => {
+    this.setState({
+      date: ev.target.value
+    })
+  }
+
+  handleSubmit = async () => {
+    this.setState({
+      disabled: true
+    })
+    await this.setState({
+      newEvent: {
+        ...this.state.newEvent,
+        'start_time': this.state.date + 'T' + this.state.time + ":00.000Z"
+      }
+    }, () => console.log('the new event', this.state.newEvent))
+
+    this.props.newEventFetch(this.state.newEvent)
   }
 
   render(){
@@ -96,15 +124,16 @@ class CreateEventModal extends Component {
        <Form>
          <Form.Field>
            <label>Event Name</label>
-           <input name='event_type'/>
+           <input name='event_type' onChange={this.handleChange}/>
          </Form.Field>
          <Form.Field>
            <label>Date and Time</label>
-           <input type='date' name='start_time'/>
+           <input type='time' name='time' onChange={this.setTime}/>
+           <input type='date' name='date' onChange={this.setDate}/>
          </Form.Field>
          <Form.Field>
            <label>Location</label>
-           <input name='location'/>
+           <input name='location' onChange={this.handleChange}/>
          </Form.Field>
          <Form.Field>
            <label>Users</label>
@@ -130,7 +159,7 @@ class CreateEventModal extends Component {
        <PetModal users={this.state.newEvent.users} getPets={this.getPets}/>
      </Modal.Content>
      <Modal.Actions>
-       <Button onClick={this.handleSubmit}>
+       <Button onClick={this.handleSubmit} disabled={this.state.disabled}>
          Submit
        </Button>
      </Modal.Actions>

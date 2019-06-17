@@ -28,7 +28,6 @@ class PetModal extends Component {
   }
 
   getUserIdArray = async () => {
-    console.log('here')
     const newUserIdList = this.props.users.map(u => u.id)
     await this.setState({
       userIdList: newUserIdList

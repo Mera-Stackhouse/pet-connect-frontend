@@ -14,6 +14,8 @@ import { Grid, Menu, Segment, Button } from 'semantic-ui-react'
 
 //Fetch URL
 const USER_URL = 'http://localhost:3000/api/v1/users/'
+const EVENT_URL = 'http://localhost:3000/api/v1/events'
+
 
 class EventsContainer extends Component {
 
@@ -39,6 +41,24 @@ class EventsContainer extends Component {
     // })
   }
 
+  newEventFetch = (event) => {
+    console.log('here', event)
+    fetch(EVENT_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        event: event
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data)
+    })
+  }
+
   handleItemClick = (string) => {
     this.setState({
       activeItem: string
@@ -49,7 +69,7 @@ class EventsContainer extends Component {
   render(){
     return <div className='EventsContainer'>
       <div className='CenteredContainer'>
-        <CreateEventModal onClick={this.props.handleCreate} user={this.props.user}/>
+        <CreateEventModal onClick={this.props.handleCreate} user={this.props.user} newEventFetch={this.newEventFetch}/>
       </div>
       {this.props.user.events.length === 0 ?
       <div className='CenteredContainer'>
