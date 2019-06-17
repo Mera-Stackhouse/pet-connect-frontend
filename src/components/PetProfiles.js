@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 
+import CreatePetModal from './CreatePetModal'
+
+//CSS
+import '../css/Profile.css'
+
 //Semantic
 import 'semantic-ui-css/semantic.min.css'
-import { Image, Icon, Card, Modal } from 'semantic-ui-react'
+import { Image, Icon, Card, Modal, Button } from 'semantic-ui-react'
 
 class PetProfiles extends Component {
 
@@ -15,6 +20,9 @@ class PetProfiles extends Component {
 
   render(){
     return <div className='petsContainer'>
+    <div>
+      <CreatePetModal user={this.props.user}/>
+    </div>
       {this.props.pets ?
         (
           <Card.Group itemsPerRow={2}>

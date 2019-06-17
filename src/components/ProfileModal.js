@@ -9,19 +9,16 @@ const EVENT_URL = 'http://localhost:3000/api/v1/events/'
 class ProfileModal extends Component {
   state = {
     newUser: {},
-    open: false
+    open: false,
+    disabled: false
   }
 
-  // getDerivedStateFromProps() {
-  // 
-  // }
-
-  // componentDidMount() {
-  //   console.log('here', this.props.user)
-  //   this.setState({
-  //     newUser: this.props.user
-  //   })
-  // }
+  componentDidMount() {
+    console.log('here', this.props.user)
+    this.setState({
+      newUser: this.props.user
+    })
+  }
 
   changeForm = (ev) => {
     this.setState({
@@ -34,14 +31,16 @@ class ProfileModal extends Component {
 
   handleSubmit = () => {
     this.setState({
-      open: false
+      open: false,
+      disabled: true
     })
-    this.props.handleFetch(this.state.newUser)
+    this.props.handleEditUser(this.state.newUser)
   }
 
   toggle = () => {
     this.setState({
-      open: !this.state.open
+      open: !this.state.open,
+      disabled: false
     })
   }
 
@@ -57,6 +56,10 @@ class ProfileModal extends Component {
           <Form.Field>
             <label>Name</label>
             <input name='name' value={this.state.newUser.name} onChange={this.changeForm} />
+          </Form.Field>
+          <Form.Field>
+            <label>Image URL</label>
+            <input name='img_url' value={this.state.newUser.img_url} onChange={this.changeForm} />
           </Form.Field>
           <Form.Field>
             <label>Neighborhood</label>
@@ -77,7 +80,7 @@ class ProfileModal extends Component {
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={this.props.handleSubmit}>
+        <Button disabled={this.state.disabled} onClick={this.handleSubmit}>
           Submit
         </Button>
       </Modal.Actions>

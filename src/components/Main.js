@@ -22,8 +22,9 @@ class Main extends Component {
    return (
      <>
       <NavBar logout={this.props.logout}/>
-      <Route path="/events" render={() => <EventsContainer user={this.props.user} handleCreateEvent={this.props.handleCreateEvent}/>} />
-      <Route path="/profile" component={ProfileContainer}/>
+      <Route path="/events" render={() => <EventsContainer user={this.props.user} handleCreateEvent={this.props.handleCreateEvent}/>}
+      />
+      <Route path="/profile" render={() => <ProfileContainer user={this.props.user} handleEditUser={this.props.handleEditUser}/>}/>
       <Route path="/friends" component={FriendsContainer}/>
     </>
    )

@@ -26,19 +26,12 @@ class EventsContainer extends Component {
       activeItem: ''
     }
     console.log('user in events', this.props.user)
-    //Using App state of the user now
-    // fetch(USER_URL + this.props.user.id, {
-    //   headers: {
-    //     'token': localStorage.getItem('token')
-    //   }
-    // })
-    // .then(resp => resp.json())
-    // .then(data => {
-    //   console.log('here', data)
-    // //   this.setState({
-    // //     events: data.user.events
-    // //   }, () => console.log(this.state.events))
-    // })
+  }
+
+  componentDidMount() {
+    this.setState({
+      events: this.props.user.events
+    })
   }
 
   newEventFetch = (event) => {
@@ -55,7 +48,10 @@ class EventsContainer extends Component {
     })
     .then(resp => resp.json())
     .then(data => {
-      console.log(data)
+      console.log('fetch back', data)
+      this.setState({
+        events: [...this.state.events, data]
+      })
     })
   }
 
@@ -79,7 +75,7 @@ class EventsContainer extends Component {
       <Grid>
         <Grid.Column width={4}>
           <Menu fluid vertical tabular>
-            {this.props.user.events.map(e => {
+            {this.state.events.map(e => {
               return <EventList
                       key={e.id}
                       event={e}
@@ -92,7 +88,7 @@ class EventsContainer extends Component {
 
         <Grid.Column stretched width={12}>
           <Segment>
-            {this.props.user.events.map(e => {
+            {this.state.events.map(e => {
               return this.state.activeItem === e.id ?
               <EventCard
                 event={e}

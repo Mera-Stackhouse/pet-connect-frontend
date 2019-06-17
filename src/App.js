@@ -7,6 +7,10 @@ import './App.css'
 import Login from './components/Login'
 import Main from './components/Main'
 
+
+const USER_URL = 'http://localhost:3000/api/v1/users/'
+
+
 class App extends Component {
 
   constructor() {
@@ -39,11 +43,32 @@ class App extends Component {
     this.setCurrentUser(null)
   }
 
+  handleEditUser = (newUser) => {
+
+    fetch(USER_URL + newUser.id, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        user: newUser
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      console.log('new user data', data)
+      this.setState({
+        user: data
+      })
+    })
+  }
+
   render() {
     return (
         this.state.loggedIn ?
         <div className='background'>
-          <Main user={this.state.user} handleCreateEvent={this.handleCreateEvent} logout={this.logout}/>
+          <Main user={this.state.user} handleCreateEvent={this.handleCreateEvent} logout={this.logout} handleEditUser={this.handleEditUser}/>
         </div>
         :
         <Login setCurrentUser={this.setCurrentUser} toggleLogIn={this.toggleLogIn}/>

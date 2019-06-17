@@ -53,10 +53,14 @@ class EventCard extends Component {
   }
 
   getTime = () => {
+
     const date = new Date(this.state.event.start_time)
     const hours = date.getHours()
-    const minutes = date.getMinutes()
-    return `At ${hours}:${minutes}`
+    let minutes = date.getMinutes()
+    if (minutes.toString().length < 2) {
+      minutes = minutes + '0'
+    }
+    return `At ${hours}:${minutes} am`
 
   }
 

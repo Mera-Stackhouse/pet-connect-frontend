@@ -29,7 +29,7 @@ class ProfileInfo extends Component {
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <ProfileModal user={this.props.user} handleFetch={this.props.handleFetch}  />
+        <ProfileModal user={this.props.user} handleEditUser={this.props.handleEditUser}  />
       </Card.Content>
     </Card>
    </div>

@@ -106,9 +106,13 @@ class CreateEventModal extends Component {
     await this.setState({
       newEvent: {
         ...this.state.newEvent,
-        'start_time': this.state.date + 'T' + this.state.time + ":00.000Z"
+        'start_time': this.state.date + 'T' + this.state.time + ":00.000-0700"
       }
     }, () => console.log('the new event', this.state.newEvent))
+
+    this.setState({
+      open: false
+    })
 
     this.props.newEventFetch(this.state.newEvent)
   }
