@@ -2,8 +2,6 @@
   margin: auto;
   border: 1px solid purple;
   width: 80vh;
-  display: flex;
-  justify-content: center;
 }
 .userContainer {
   margin: auto;
@@ -15,9 +13,7 @@
 
 
 .petsContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: auto;
   margin: 1em;
   border: 1px solid purple;
 
@@ -28,4 +24,13 @@
   justify-content: center;
   align-items: center;
   border: 1px solid purple;
+  margin: 1em;
+}
+
+.CenteredContainerNoMargin{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid purple;
+  margin: 0em;
 }

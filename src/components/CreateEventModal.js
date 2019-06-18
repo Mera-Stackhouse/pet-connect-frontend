@@ -30,7 +30,7 @@ class CreateEventModal extends Component {
     .then(data => {
       this.setState({
         users: data
-      }, () => console.log(this.state.users))
+      })
     })
   }
 
@@ -50,12 +50,10 @@ class CreateEventModal extends Component {
         ...this.state.newEvent,
         [ev.target.name]: ev.target.value
       }
-    }, () => console.log('whole event', this.state.newEvent))
+    })
   }
 
   pickUsers = (ev) => {
-    console.log(this.state.newEvent)
-    console.log('ev', ev)
 
     if (ev[0]) {
       this.setState({
@@ -63,7 +61,7 @@ class CreateEventModal extends Component {
           ...this.state.newEvent,
           users: [...ev, this.props.user]
         }
-      }, () => console.log(this.state.newEvent.users))
+      })
     }
   }
 
@@ -73,7 +71,7 @@ class CreateEventModal extends Component {
         ...this.state.newEvent,
         pets: pets
       }
-    }, () => console.log('here with', this.state.newEvent.pets))
+    })
   }
 
   showPets = () => {
@@ -106,9 +104,9 @@ class CreateEventModal extends Component {
     await this.setState({
       newEvent: {
         ...this.state.newEvent,
-        'start_time': this.state.date + 'T' + this.state.time + ":00.000-0700"
+        'start_time': this.state.date + 'T' + this.state.time + ":00.000-0800"
       }
-    }, () => console.log('the new event', this.state.newEvent))
+    })
 
     this.setState({
       open: false
@@ -123,7 +121,7 @@ class CreateEventModal extends Component {
              open={this.state.open}
              onClose={this.toggle}
              closeIcon>
-     <Header icon='edit' content='Create an Event' />
+     <Header icon='add' content='Create an Event' />
      <Modal.Content>
        <Form>
          <Form.Field>
@@ -132,8 +130,8 @@ class CreateEventModal extends Component {
          </Form.Field>
          <Form.Field>
            <label>Date and Time</label>
-           <input type='time' name='time' onChange={this.setTime}/>
            <input type='date' name='date' onChange={this.setDate}/>
+           <input type='time' name='time' onChange={this.setTime}/>
          </Form.Field>
          <Form.Field>
            <label>Location</label>

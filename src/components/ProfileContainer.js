@@ -42,7 +42,7 @@ class ProfileContainer extends Component {
     return (
       <div className='ProfileContainer'>
         <ProfileInfo user={this.props.user} handleEditUser={this.props.handleEditUser}/>
-        <PetProfiles pets={this.state.user.pets} user={this.props.user}/>
+        <PetProfiles pets={this.props.user.pets} user={this.props.user}/>
       </div>
     )
   }

@@ -85,7 +85,7 @@ class EventCard extends Component {
           <div className='CenteredContainer'>
             {this.state.event.users.map (u => {
               return <>
-                {this.props.user === u.id ?
+                {this.props.user.id === u.id ?
                   null
                   :
                   <div className='users' key={u.id}>

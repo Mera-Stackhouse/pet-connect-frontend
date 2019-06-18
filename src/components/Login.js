@@ -35,6 +35,7 @@ class Login extends Component {
       // Check console logs for additional User info
       provider.me().then((data) => {
         console.log('name', data.raw.names[0].displayName);
+        console.log('data', data);
         localStorage.setItem('email', data.email)
         localStorage.setItem('name', data.raw.names[0].displayName)
         //image?

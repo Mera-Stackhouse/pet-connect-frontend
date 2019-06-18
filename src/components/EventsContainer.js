@@ -25,7 +25,6 @@ class EventsContainer extends Component {
       events: [],
       activeItem: ''
     }
-    console.log('user in events', this.props.user)
   }
 
   componentDidMount() {
@@ -35,7 +34,6 @@ class EventsContainer extends Component {
   }
 
   newEventFetch = (event) => {
-    console.log('here', event)
     fetch(EVENT_URL, {
       method: 'POST',
       headers: {
@@ -48,7 +46,6 @@ class EventsContainer extends Component {
     })
     .then(resp => resp.json())
     .then(data => {
-      console.log('fetch back', data)
       this.setState({
         events: [...this.state.events, data]
       })

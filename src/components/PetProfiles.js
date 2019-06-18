@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
 import CreatePetModal from './CreatePetModal'
+import EditPetModal from './EditPetModal'
+import PetCard from './PetCard'
 
 //CSS
 import '../css/Profile.css'
@@ -9,38 +11,82 @@ import '../css/Profile.css'
 import 'semantic-ui-css/semantic.min.css'
 import { Image, Icon, Card, Modal, Button } from 'semantic-ui-react'
 
+const PET_URL = 'http://localhost:3000/api/v1/pets'
+
 class PetProfiles extends Component {
 
   constructor(){
     super()
     this.state = {
-
+      pets: []
     }
   }
 
+  componentDidMount() {
+    if (this.props.pets) {
+      this.setState({
+        pets: this.props.pets
+      })
+    }
+  }
+
+  handleCreatePet = (newPet) => {
+
+    fetch(PET_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        pet: newPet
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      this.setState({
+        pets: [...this.state.pets, data]
+      })
+    })
+  }
+
+  handleDelete = (pet) => {
+    console.log('here', pet)
+    fetch(PET_URL + '/' + pet.id, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      this.setState({
+        pets: this.state.pets.filter(p => p.id !== pet.id)
+      })
+    })
+  }
+
+
+
   render(){
     return <div className='petsContainer'>
-    <div>
-      <CreatePetModal user={this.props.user}/>
+    <div className='CenteredContainer'>
+      <CreatePetModal user={this.props.user} handleCreatePet={this.handleCreatePet}/>
     </div>
-      {this.props.pets ?
+    <div className=''>
+      {this.state.pets ?
         (
           <Card.Group itemsPerRow={2}>
-            {this.props.pets.map( p => {
-              return (<Card>
-                <Card.Content>
-                  <Image size='tiny' src={p.img_url} />
-                  <Card.Header>{p.name}</Card.Header>
-                  <Card.Meta>{p.breed}</Card.Meta>
-                </Card.Content>
-                </Card>
-              )
+            {this.state.pets.map( p => {
+              return <PetCard pet={p} key={p.id} handleDelete={this.handleDelete}/>
             })}
           </Card.Group>
         )
         :
         null
       }
+    </div>
     </div>
   }
 }

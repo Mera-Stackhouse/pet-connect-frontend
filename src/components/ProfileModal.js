@@ -50,7 +50,7 @@ class ProfileModal extends Component {
               open={this.state.open}
               onClose={this.toggle}
               closeIcon>
-      <Header icon='edit' content='Edit this Event' />
+      <Header icon='edit' content='Edit Your Profile' />
       <Modal.Content>
         <Form>
           <Form.Field>

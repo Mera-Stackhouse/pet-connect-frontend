@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import 'semantic-ui-css/semantic.min.css'
 import { Button, Header, Icon, Modal, Form } from 'semantic-ui-react'
 
-class CreatePetModal extends Component {
+class EditPetModal extends Component {
 
   constructor(){
     super()
@@ -14,11 +14,15 @@ class CreatePetModal extends Component {
     }
   }
 
+  componentDidMount() {
+    this.setState({
+      newPet: this.props.pet
+    }, () => console.log(this.state.newPet))
+  }
+
   toggle = () => {
     this.setState({
-      open: !this.state.open,
-      newPet: {},
-      disabled: false
+      open: !this.state.open
     })
   }
 
@@ -31,40 +35,34 @@ class CreatePetModal extends Component {
     }, () => console.log('pet', this.state.newPet))
   }
 
-  handleSubmit = async () => {
+  handleSubmit = () => {
     this.setState({
       disabled: true,
       open: false
     })
-    await this.setState({
-      newPet: {
-        ...this.state.newPet,
-        userId: this.props.user.id
-      }
-    })
-    this.props.handleCreatePet(this.state.newPet)
+    this.props.handleEditPet(this.state.newPet)
   }
 
   render(){
    return <Modal
-             trigger={<Button onClick={this.toggle}>Add a Pet</Button>}
+             trigger={<Button onClick={this.toggle}>Edit</Button>}
              open={this.state.open}
              onClose={this.toggle}
              closeIcon>
-     <Header icon='add' content='Add a Pet' />
+     <Header icon='edit' content='Edit this Pet' />
      <Modal.Content>
        <Form>
          <Form.Field>
            <label>Name</label>
-           <input name='name' onChange={this.handleChange}/>
+           <input name='name' value={this.state.newPet.name} onChange={this.handleChange}/>
          </Form.Field>
          <Form.Field>
            <label>Breed</label>
-           <input name='breed' onChange={this.handleChange}/>
+           <input name='breed' value={this.state.newPet.breed} onChange={this.handleChange}/>
          </Form.Field>
          <Form.Field>
            <label>Image URL</label>
-           <input name='img_url' onChange={this.handleChange}/>
+           <input name='img_url' value={this.state.newPet.img_url} onChange={this.handleChange}/>
          </Form.Field>
        </Form>
      </Modal.Content>
@@ -77,4 +75,4 @@ class CreatePetModal extends Component {
   }
 }
 
-export default CreatePetModal
+export default EditPetModal
