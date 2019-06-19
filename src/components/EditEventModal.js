@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import EditEventsPetsModal from './EditEventsPetsModal'
+
 //Semantic
 import 'semantic-ui-css/semantic.min.css'
 import { Button, Header, Icon, Modal, Form } from 'semantic-ui-react'
@@ -9,7 +11,7 @@ import Select from "react-dropdown-select"
 const EVENT_URL = 'http://localhost:3000/api/v1/events/'
 const USER_URL = 'http://localhost:3000/api/v1/users/'
 
-class EventModal extends Component {
+class EditEventModal extends Component {
   constructor() {
     super()
     this.state = {
@@ -50,15 +52,16 @@ class EventModal extends Component {
     })
   }
 
-  handleSubmit = () => {
-    this.setState({
+  handleSubmit = async () => {
+    await this.setState({
       open: false,
       newEvent: {
         ...this.state.newEvent,
         start_time: this.state.date + "T" + this.state.time + ':00.000-0800'
       }
     }, () => console.log(this.state.newEvent))
-    this.props.handleFetch(this.state.newEvent)
+
+    this.props.editEventFetch(this.state.newEvent)
   }
 
   setTime = (ev) => {
@@ -98,25 +101,42 @@ class EventModal extends Component {
     }
   }
 
-  pickUsers = (ev) => {
-    // console.log(this.state.newEvent)
-    // console.log('ev', ev)
+  getPets = (pets) => {
+    console.log('here')
     this.setState({
       newEvent: {
         ...this.state.newEvent,
-        users: [...ev]
+        pets: pets
       }
     })
-
-    // if (ev[0]) {
-    //   this.setState({
-    //     newEvent: {
-    //       ...this.state.newEvent,
-    //       users: [...ev]
-    //     }
-    //   }, () => console.log(this.state.newEvent.users))
-    // }
   }
+
+  pickUsers = (ev) => {
+    this.setState({
+      newEvent: {
+        ...this.state.newEvent,
+        users: [...ev, this.props.user]
+      }
+    })
+  }
+
+  showPets = () => {
+    if (this.state.newEvent.pets) {
+      return <div>
+        {this.state.newEvent.pets.map(p => {
+          return <span key={p.id}>{p.name}<br/></span>
+        })}
+      </div>
+    }
+    return
+  }
+
+  filterUsers = () => {
+    if (this.state.newEvent.users) {
+      return this.state.newEvent.users.filter(u => u.id !== this.props.user.id)
+    }
+  }
+
 
   render() {
     return <Modal
@@ -143,9 +163,9 @@ class EventModal extends Component {
           <Form.Field>
             <label>Users</label>
             <Select
-             options={this.state.users}
+             options={this.state.users.filter(u => u.id !== this.props.user.id)}
              valueField='name'
-             values={this.state.newEvent.users}
+             values={this.filterUsers()}
              keepSelectedInList={false}
              name='users'
              onChange={this.pickUsers}
@@ -156,8 +176,13 @@ class EventModal extends Component {
              multi={true}
            />
           </Form.Field>
-
-        </Form>
+          <Form.Field>
+            <label>Pets</label>
+            {this.showPets()}
+          </Form.Field>
+          <br/>
+         </Form>
+         <EditEventsPetsModal users={this.state.newEvent.users} getPets={this.getPets} event={this.state.newEvent}/>
       </Modal.Content>
       <Modal.Actions>
         <Button onClick={this.handleSubmit}>
@@ -168,4 +193,4 @@ class EventModal extends Component {
   }
 }
 
-export default EventModal
+export default EditEventModal

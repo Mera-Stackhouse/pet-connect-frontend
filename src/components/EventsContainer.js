@@ -28,10 +28,18 @@ class EventsContainer extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      events: this.props.user.events
+    this.props.user.events.map(e => {
+      fetch(EVENT_URL + '/' + e.id)
+      .then(resp => resp.json())
+      .then(data => {
+        this.setState({
+          events: [...this.state.events, data.event]
+        })
+      })
     })
+
   }
+
 
   newEventFetch = (event) => {
     fetch(EVENT_URL, {
@@ -46,6 +54,7 @@ class EventsContainer extends Component {
     })
     .then(resp => resp.json())
     .then(data => {
+
       this.setState({
         events: [...this.state.events, data]
       })
@@ -64,7 +73,7 @@ class EventsContainer extends Component {
       <div className='CenteredContainer'>
         <CreateEventModal onClick={this.props.handleCreate} user={this.props.user} newEventFetch={this.newEventFetch}/>
       </div>
-      {this.props.user.events.length === 0 ?
+      {this.state.events.length === 0 ?
       <div className='CenteredContainer'>
         <p>You don't have any events yet!</p>
       </div>

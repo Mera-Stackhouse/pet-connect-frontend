@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import 'semantic-ui-css/semantic.min.css'
 import { Button, Header, Icon, Modal, Form } from 'semantic-ui-react'
 
-import PetModal from './PetModal'
+import CreateEventsPetsModal from './CreateEventsPetsModal'
 
 import Select from "react-dropdown-select"
 
@@ -140,7 +140,7 @@ class CreateEventModal extends Component {
          <Form.Field>
            <label>Users</label>
            <Select
-            options={this.state.users}
+            options={this.state.users.filter(u => u.id !== this.props.user.id)}
             valueField='name'
             keepSelectedInList={false}
             name='users'
@@ -158,7 +158,7 @@ class CreateEventModal extends Component {
          </Form.Field>
          <br/>
        </Form>
-       <PetModal users={this.state.newEvent.users} getPets={this.getPets}/>
+       <CreateEventsPetsModal users={this.state.newEvent.users} getPets={this.getPets}/>
      </Modal.Content>
      <Modal.Actions>
        <Button onClick={this.handleSubmit} disabled={this.state.disabled}>

@@ -24,25 +24,27 @@ class Login extends Component {
   handleClick = (e) => {
     // Prevents page reload
     //e.preventDefault();
+    if (window.OAuth) {
+      // Initializes OAuth.io with API key
+      window.OAuth.initialize('kHem6s_qmpzHUGwxcu5VHFz0orc');
 
-    // Initializes OAuth.io with API key
-    window.OAuth.initialize('kHem6s_qmpzHUGwxcu5VHFz0orc');
+      // Popup Google and ask for authorization
+      window.OAuth.popup('google').then((provider) => {
+        localStorage.setItem('token', provider.id_token)
+        // Prompts 'welcome' message with User's name on successful login
+        // Check console logs for additional User info
+        provider.me().then((data) => {
+          console.log('name', data.raw.names[0].displayName);
+          console.log('data', data);
+          localStorage.setItem('email', data.email)
+          localStorage.setItem('name', data.raw.names[0].displayName)
+          //image?
+        });
 
-    // Popup Google and ask for authorization
-    window.OAuth.popup('google').then((provider) => {
-      localStorage.setItem('token', provider.id_token)
-      // Prompts 'welcome' message with User's name on successful login
-      // Check console logs for additional User info
-      provider.me().then((data) => {
-        console.log('name', data.raw.names[0].displayName);
-        console.log('data', data);
-        localStorage.setItem('email', data.email)
-        localStorage.setItem('name', data.raw.names[0].displayName)
-        //image?
       });
+      this.sendAuth()
+    }
 
-    });
-    this.sendAuth()
   }
   // put this somwhere that i need save to the database
   // call this again but with the token in the headers whenever I'm updating info

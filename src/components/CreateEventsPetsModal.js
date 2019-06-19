@@ -7,7 +7,7 @@ import { Button, Header, Icon, Modal, Form } from 'semantic-ui-react'
 
 const PETS_URL = 'http://localhost:3000/api/v1/pets'
 
-class PetModal extends Component {
+class CreateEventsPetsModal extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -31,7 +31,7 @@ class PetModal extends Component {
     const newUserIdList = this.props.users.map(u => u.id)
     await this.setState({
       userIdList: newUserIdList
-    }, () => console.log(this.state.userIdList))
+    }, () => console.log('user id list',this.state.userIdList))
     this.getSelectedPets()
   }
 
@@ -44,17 +44,8 @@ class PetModal extends Component {
     })
     this.setState({
       releventPets: releventPets
-    }, () => console.log(releventPets))
+    }, () => console.log('relevant pets', releventPets))
   }
-
-    //
-    //
-    //   debugger
-    //   this.setState({
-    //     pets: releventPets
-    //   }, () => console.log(this.state.pets))
-    // })
-  // }
 
   pickPets = (ev) => {
     console.log(ev)
@@ -114,4 +105,4 @@ class PetModal extends Component {
   }
 }
 
-export default PetModal
+export default CreateEventsPetsModal

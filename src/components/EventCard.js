@@ -8,7 +8,7 @@ import { Image, Icon } from 'semantic-ui-react'
 import '../css/Events.css'
 
 //Components
-import EventModal from './EventModal'
+import EditEventModal from './EditEventModal'
 
 const API_KEY = `${process.env.REACT_APP_GOOGLE_MAPS_EMBED_API_KEY}`
 
@@ -19,42 +19,25 @@ class EventCard extends Component {
       event: null
     }
 
-  componentDidMount() {
-    fetch(EVENT_URL + this.props.event.id)
-    .then(resp => resp.json())
-    .then(data => {
+  // componentDidMount() {
+  //   fetch(EVENT_URL + this.props.event.id)
+  //   .then(resp => resp.json())
+  //   .then(data => {
+  //
+  //     this.setState({
+  //       event: data.event
+  //     })
+  //
+  //
+  //   })
+  // }
 
-      this.setState({
-        event: data.event
-      })
 
 
-    })
-  }
-
-  handleFetch = (newEvent) => {
-    console.log(newEvent)
-    fetch(EVENT_URL + newEvent.id, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        event: newEvent
-      })
-    })
-    .then(resp => resp.json())
-    .then(data => {
-      this.setState({
-        event: newEvent
-      })
-    })
-  }
 
   getTime = () => {
 
-    const date = new Date(this.state.event.start_time)
+    const date = new Date(this.props.event.start_time)
     const hours = date.getHours()
     let minutes = date.getMinutes()
     if (minutes.toString().length < 2) {
@@ -65,7 +48,7 @@ class EventCard extends Component {
   }
 
   getSearchTerms = () => {
-    const array = this.state.event.location.split(' ')
+    const array = this.props.event.location.split(' ')
     const string = array.join('+')
     return string
   }
@@ -75,16 +58,16 @@ class EventCard extends Component {
 
   render(){
     return (
-      this.state.event ?
+      this.props.event ?
       (
         <div className='EventCard' >
           <div className='EventTitle'>
-            <h2>{this.state.event.event_type} with</h2>
+            <h2>{this.props.event.event_type} with</h2>
           </div>
 
           <div className='CenteredContainer'>
-            {this.state.event.users.map (u => {
-              return <>
+            {this.props.event.users.map (u => {
+              return <div key={u.id}>
                 {this.props.user.id === u.id ?
                   null
                   :
@@ -93,12 +76,12 @@ class EventCard extends Component {
                     <center><p>{u.name}</p></center>
                   </div>
                 }
-              </>
+              </div>
             })}
           </div>
           <br/>
           <div className='CenteredContainer'>
-            {this.state.event.pets.map (p => {
+            {this.props.event.pets.map (p => {
               return <div className='pets' key={p.id}>
                 <Image circular size='tiny' src={p.img_url} />
                 <center><p>{p.name}</p></center>
@@ -107,7 +90,7 @@ class EventCard extends Component {
           </div>
           <br/>
           <p>{this.getTime()}</p>
-          <Icon name='map marker alternate' />{this.state.event.location}
+          <Icon name='map marker alternate' />{this.props.event.location}
           <div className='EventMap'>
             <iframe
               title='googleMaps'
@@ -118,7 +101,7 @@ class EventCard extends Component {
             </iframe>
           </div><br />
           <div className='EventButton'>
-            <EventModal event={this.state.event} key={this.state.event.id} handleFetch={this.handleFetch}/>
+            <EditEventModal event={this.props.event} key={this.props.event.id} user={this.props.user} editEventFetch={this.editEventFetch}/>
           </div>
         </div>
       )
