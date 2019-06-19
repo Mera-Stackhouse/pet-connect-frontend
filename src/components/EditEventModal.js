@@ -140,11 +140,11 @@ class EditEventModal extends Component {
 
   render() {
     return <Modal
-              trigger={<Button onClick={this.toggle}>Edit</Button>}
+              trigger={<Button basic color='violet' onClick={this.toggle}>Edit</Button>}
               open={this.state.open}
               onClose={this.toggle}
               closeIcon>
-      <Header icon='edit' content='Edit this Event' />
+      <Header icon='edit' color='violet' content='Edit this Event' />
       <Modal.Content>
         <Form>
           <Form.Field>
@@ -185,7 +185,7 @@ class EditEventModal extends Component {
          <EditEventsPetsModal users={this.state.newEvent.users} getPets={this.getPets} event={this.state.newEvent}/>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={this.handleSubmit}>
+        <Button basic color='violet' onClick={this.handleSubmit}>
           Submit
         </Button>
       </Modal.Actions>

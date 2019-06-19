@@ -6,6 +6,10 @@ import EditPetModal from './EditPetModal'
 import 'semantic-ui-css/semantic.min.css'
 import { Image, Card, Button } from 'semantic-ui-react'
 
+
+//CSS
+import '../css/Profile.css'
+
 const PET_URL = 'http://localhost:3000/api/v1/pets'
 
 class PetCard extends Component {
@@ -45,17 +49,24 @@ class PetCard extends Component {
   }
 
   render(){
-   return (
-     <Card key={this.state.pet.id}>
-       <Card.Content>
-         <div className='CenteredContainerNoMargin'><Image circular size='tiny' src={this.state.pet.img_url} /></div>
-         <div className='CenteredContainerNoMargin'><Card.Header>{this.state.pet.name}</Card.Header></div>
-         <div className='CenteredContainerNoMargin'><Card.Meta>{this.state.pet.breed}</Card.Meta></div>
-       </Card.Content>
-       <div className='CenteredContainerNoMargin'><div><EditPetModal pet={this.state.pet} handleEditPet={this.handleEditPet}/></div>
-       <div><Button secondary pet={this.state.pet} onClick={() => this.props.handleDelete(this.state.pet)}>Delete</Button></div></div>
-       </Card>
-   )
+    return (
+      <div className='petCard'>
+        <div className='CenteredContainerNoMargin'>
+          <Image circular size='tiny' src={this.state.pet.img_url} />
+        </div>
+        <div className='CenteredContainerNoMargin'>
+          <div className='text2'>{this.state.pet.name}</div>
+        </div>
+        <div className='CenteredContainerNoMargin'>{this.state.pet.breed}</div>
+        <div className='CenteredContainerNoMargin'>
+
+            <EditPetModal pet={this.state.pet} handleEditPet={this.handleEditPet}/>
+
+            <Button basic color='violet' secondary onClick={() => this.props.handleDelete(this.state.pet)}>Delete</Button>
+
+        </div>
+      </div>
+    )
   }
 }
 

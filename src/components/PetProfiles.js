@@ -77,11 +77,11 @@ class PetProfiles extends Component {
     <div className=''>
       {this.state.pets ?
         (
-          <Card.Group itemsPerRow={2}>
+          <div className='petCardContainer'>
             {this.state.pets.map( p => {
               return <PetCard pet={p} key={p.id} handleDelete={this.handleDelete}/>
             })}
-          </Card.Group>
+          </div>
         )
         :
         null

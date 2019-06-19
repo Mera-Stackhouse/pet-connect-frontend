@@ -120,7 +120,7 @@ class EventsContainer extends Component {
       :
       <Grid>
         <Grid.Column width={4}>
-          <Menu fluid vertical tabular>
+          <Menu fluid vertical tabular color='violet'>
             {this.state.events.map(e => {
               return <EventList
                       key={e.id}
@@ -133,7 +133,7 @@ class EventsContainer extends Component {
         </Grid.Column>
 
         <Grid.Column stretched width={12}>
-          <Segment>
+          <Segment color='violet'>
             {this.state.events.map(e => {
               return this.state.activeItem === e.id ?
               <EventCard

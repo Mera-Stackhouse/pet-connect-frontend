@@ -46,11 +46,11 @@ class ProfileModal extends Component {
 
   render() {
     return <Modal
-              trigger={<Button onClick={this.toggle}>Edit</Button>}
+              trigger={<Button basic color='violet' onClick={this.toggle}>Edit</Button>}
               open={this.state.open}
               onClose={this.toggle}
               closeIcon>
-      <Header icon='edit' content='Edit Your Profile' />
+      <Header icon='edit' color='violet' content='Edit Your Profile' />
       <Modal.Content>
         <Form>
           <Form.Field>
@@ -80,7 +80,7 @@ class ProfileModal extends Component {
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <Button disabled={this.state.disabled} onClick={this.handleSubmit}>
+        <Button basic color='violet' disabled={this.state.disabled} onClick={this.handleSubmit}>
           Submit
         </Button>
       </Modal.Actions>

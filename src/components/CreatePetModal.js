@@ -47,11 +47,11 @@ class CreatePetModal extends Component {
 
   render(){
    return <Modal
-             trigger={<Button onClick={this.toggle}>Add a Pet</Button>}
+             trigger={<Button basic color='violet' onClick={this.toggle}>Add a Pet</Button>}
              open={this.state.open}
              onClose={this.toggle}
              closeIcon>
-     <Header icon='add' content='Add a Pet' />
+     <Header icon='add' color='violet' content='Add a Pet' />
      <Modal.Content>
        <Form>
          <Form.Field>
@@ -69,7 +69,7 @@ class CreatePetModal extends Component {
        </Form>
      </Modal.Content>
      <Modal.Actions>
-       <Button onClick={this.handleSubmit} disabled={this.state.disabled}>
+       <Button basic color='violet' onClick={this.handleSubmit} disabled={this.state.disabled}>
          Submit
        </Button>
      </Modal.Actions>

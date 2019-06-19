@@ -45,11 +45,11 @@ class EditPetModal extends Component {
 
   render(){
    return <Modal
-             trigger={<Button onClick={this.toggle}>Edit</Button>}
+             trigger={<Button basic color='violet' onClick={this.toggle}>Edit</Button>}
              open={this.state.open}
              onClose={this.toggle}
              closeIcon>
-     <Header icon='edit' content='Edit this Pet' />
+     <Header icon='edit' color='violet' content='Edit this Pet' />
      <Modal.Content>
        <Form>
          <Form.Field>
@@ -67,7 +67,7 @@ class EditPetModal extends Component {
        </Form>
      </Modal.Content>
      <Modal.Actions>
-       <Button onClick={this.handleSubmit} disabled={this.state.disabled}>
+       <Button basic color='violet' onClick={this.handleSubmit} disabled={this.state.disabled}>
          Submit
        </Button>
      </Modal.Actions>

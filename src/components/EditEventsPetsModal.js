@@ -64,7 +64,7 @@ class EditEventsPetsModal extends Component {
 
   render(){
    return <Modal
-             trigger={<Button onClick={() => {
+             trigger={<Button basic color='violet' onClick={() => {
                this.toggle()
                this.getUserIdArray()
              }}
@@ -72,7 +72,7 @@ class EditEventsPetsModal extends Component {
              open={this.state.open}
              onClose={this.toggle}
              closeIcon>
-     <Header icon='edit' content='Choose Pets' />
+     <Header icon='edit' color='violet' content='Choose Pets' />
      <Modal.Content>
        <Form>
          <Form.Field>
@@ -94,7 +94,7 @@ class EditEventsPetsModal extends Component {
        </Form>
      </Modal.Content>
      <Modal.Actions>
-       <Button onClick={() => {
+       <Button basic color='violet' onClick={() => {
          this.toggle()
          this.props.getPets(this.state.selectedPets) }
        }>

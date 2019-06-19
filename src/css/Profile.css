@@ -15,7 +15,7 @@
 .petsContainer {
   margin: auto;
   margin: 1em;
-  /* border: 1px solid purple; */
+  border: 1px solid purple;
 
 }
 
@@ -33,4 +33,24 @@
   align-items: center;
   /* border: 1px solid purple; */
   margin: 0em;
+}
+
+
+.petCard {
+  /* margin: auto; */
+  margin: 1em;
+  /* border: 1px solid purple; */
+}
+
+.bottonsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.petCardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid purple; */
 }

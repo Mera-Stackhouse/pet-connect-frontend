@@ -26,7 +26,7 @@ class EventList extends Component {
         active={this.props.activeItem === this.props.event.id}
         onClick={() => this.props.handleItemClick(this.props.event.id)}
       >
-      {this.getDate(this.props.event.start_time) + this.props.event.event_type}
+      <p className='text2'>{this.getDate(this.props.event.start_time) + this.props.event.event_type}</p>
       </Menu.Item>
     )
   }

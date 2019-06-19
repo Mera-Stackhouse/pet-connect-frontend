@@ -121,7 +121,7 @@ class CreateEventModal extends Component {
              open={this.state.open}
              onClose={this.toggle}
              closeIcon>
-     <Header icon='add' content='Create an Event' />
+     <Header icon='add' color='violet' content='Create an Event' />
      <Modal.Content>
        <Form>
          <Form.Field>
