@@ -25,21 +25,59 @@ class EventsContainer extends Component {
       events: [],
       activeItem: ''
     }
-  }
-
-  componentDidMount() {
     this.props.user.events.map(e => {
       fetch(EVENT_URL + '/' + e.id)
       .then(resp => resp.json())
       .then(data => {
+        const events = [...this.state.events, data.event]
+        const sortedEvents = events.sort((a, b) => {return new Date(a.start_time).getTime() - new Date(b.start_time).getTime()})
         this.setState({
-          events: [...this.state.events, data.event]
+          events: sortedEvents
         })
       })
     })
 
   }
 
+  // componentDidMount() {
+  //   // const events = []
+  //   //console.log(this.props.user.events)
+  //
+  //   // console.log(events)
+  //   // this.orderEvents(events)
+  //
+  //
+  // }
+
+  fetchEvent = (e) => {
+
+  }
+
+  orderEvents = () => {
+
+  }
+
+  editEventFetch = (event) => {
+    fetch(EVENT_URL + '/' + event.id, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        event: event
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      const otherEvents = this.state.events.filter(e => e.id !== event.id)
+      const events = [...otherEvents, data]
+      const sortedEvents = events.sort((a, b) => {return new Date(a.start_time).getTime() - new Date(b.start_time).getTime()})
+      this.setState({
+        events: sortedEvents
+      })
+    })
+  }
 
   newEventFetch = (event) => {
     fetch(EVENT_URL, {
@@ -54,9 +92,11 @@ class EventsContainer extends Component {
     })
     .then(resp => resp.json())
     .then(data => {
-
+      const otherEvents = this.state.events
+      const events = [...otherEvents, data]
+      const sortedEvents = events.sort((a, b) => {return new Date(a.start_time).getTime() - new Date(b.start_time).getTime()})
       this.setState({
-        events: [...this.state.events, data]
+        events: sortedEvents
       })
     })
   }
@@ -75,7 +115,7 @@ class EventsContainer extends Component {
       </div>
       {this.state.events.length === 0 ?
       <div className='CenteredContainer'>
-        <p>You don't have any events yet!</p>
+        <p>Loading!</p>
       </div>
       :
       <Grid>
@@ -100,6 +140,7 @@ class EventsContainer extends Component {
                 event={e}
                 user={this.props.user}
                 key={e.id}
+                editEventFetch={this.editEventFetch}
               />
               :
               null

@@ -15,22 +15,6 @@ const API_KEY = `${process.env.REACT_APP_GOOGLE_MAPS_EMBED_API_KEY}`
 const EVENT_URL = 'http://localhost:3000/api/v1/events/'
 
 class EventCard extends Component {
-  state = {
-      event: null
-    }
-
-  // componentDidMount() {
-  //   fetch(EVENT_URL + this.props.event.id)
-  //   .then(resp => resp.json())
-  //   .then(data => {
-  //
-  //     this.setState({
-  //       event: data.event
-  //     })
-  //
-  //
-  //   })
-  // }
 
 
 
@@ -101,7 +85,7 @@ class EventCard extends Component {
             </iframe>
           </div><br />
           <div className='EventButton'>
-            <EditEventModal event={this.props.event} key={this.props.event.id} user={this.props.user} editEventFetch={this.editEventFetch}/>
+            <EditEventModal event={this.props.event} key={this.props.event.id} user={this.props.user} editEventFetch={this.props.editEventFetch}/>
           </div>
         </div>
       )
