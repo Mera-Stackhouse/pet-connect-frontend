@@ -15,7 +15,7 @@
 .petsContainer {
   margin: auto;
   margin: 1em;
-  border: 1px solid purple;
+  /* border: 1px solid purple; */
 
 }
 
@@ -53,4 +53,12 @@
   justify-content: center;
   align-items: center;
   /* border: 1px solid purple; */
+}
+
+.imgContainer {
+  margin: 1em;
+}
+
+.infoContainer {
+  margin: 1em;
 }

@@ -28,7 +28,7 @@ class CreatePetModal extends Component {
         ...this.state.newPet,
         [ev.target.name]: ev.target.value
       }
-    }, () => console.log('pet', this.state.newPet))
+    })
   }
 
   handleSubmit = async () => {

@@ -27,7 +27,7 @@ class Main extends Component {
       <Route path="/events" render={() => <EventsContainer user={this.props.user} handleCreateEvent={this.props.handleCreateEvent}/>}
       />
       <Route path="/profile" render={() => <ProfileContainer user={this.props.user} handleEditUser={this.props.handleEditUser}/>}/>
-      <Route path="/friends" component={FriendsContainer}/>
+      <Route path="/friends" render={() => <FriendsContainer user={this.props.user}/>}/>
       <Route exact path="/" component={Welcome}/>
     </>
    )
