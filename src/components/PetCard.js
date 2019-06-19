@@ -4,7 +4,7 @@ import EditPetModal from './EditPetModal'
 
 //Semantic
 import 'semantic-ui-css/semantic.min.css'
-import { Image, Card, Button } from 'semantic-ui-react'
+import { Image, Button } from 'semantic-ui-react'
 
 
 //CSS

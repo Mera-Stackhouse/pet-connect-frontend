@@ -107,6 +107,21 @@ class EventsContainer extends Component {
     })
   }
 
+  handleDelete = (event) => {
+    console.log('here')
+    fetch(EVENT_URL + '/' + event.id, {
+      method: 'DELETE'
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      const events = this.state.events.filter(e => e.id !== event.id)
+      const sortedEvents = events.sort((a, b) => {return new Date(a.start_time).getTime() - new Date(b.start_time).getTime()})
+      this.setState({
+        events: sortedEvents
+      })
+    })
+  }
+
 
   render(){
     return <div className='EventsContainer'>
@@ -141,6 +156,7 @@ class EventsContainer extends Component {
                 user={this.props.user}
                 key={e.id}
                 editEventFetch={this.editEventFetch}
+                handleDelete= {this.handleDelete}
               />
               :
               null

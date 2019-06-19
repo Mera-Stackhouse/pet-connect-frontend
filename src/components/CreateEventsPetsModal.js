@@ -73,7 +73,7 @@ class CreateEventsPetsModal extends Component {
              open={this.state.open}
              onClose={this.toggle}
              closeIcon>
-     <Header icon='edit' content='Choose Pets' />
+     <Header icon='edit' color='violet' content='Choose Pets' />
      <Modal.Content>
        <Form>
          <Form.Field>

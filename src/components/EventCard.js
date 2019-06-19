@@ -119,7 +119,8 @@ class EventCard extends Component {
           </div><br />
           <div className='EventButton'>
             <EditEventModal event={this.props.event} key={this.props.event.id} user={this.props.user} editEventFetch={this.props.editEventFetch}/>
-            <Button basic color='violet' secondary >Delete</Button>
+
+            <Button basic color='violet' secondary onClick={() => this.props.handleDelete(this.props.event)}>Delete</Button>
           </div>
         </div>
       )
@@ -135,7 +136,7 @@ class EventCard extends Component {
 
 export default EventCard
 
-// onClick={() => this.props.handleDelete(this.state.pet)}
+
 
 // how to properly embed a google maps - but you need to fix the addresses for this
 // <div>
