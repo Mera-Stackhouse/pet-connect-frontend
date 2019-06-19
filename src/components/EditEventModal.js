@@ -4,11 +4,11 @@ import EditEventsPetsModal from './EditEventsPetsModal'
 
 //Semantic
 import 'semantic-ui-css/semantic.min.css'
-import { Button, Header, Icon, Modal, Form } from 'semantic-ui-react'
+import { Button, Header, Modal, Form } from 'semantic-ui-react'
 
 import Select from "react-dropdown-select"
 
-const EVENT_URL = 'http://localhost:3000/api/v1/events/'
+// const EVENT_URL = 'http://localhost:3000/api/v1/events/'
 const USER_URL = 'http://localhost:3000/api/v1/users/'
 
 class EditEventModal extends Component {

@@ -12,7 +12,7 @@ import EditEventModal from './EditEventModal'
 
 const API_KEY = `${process.env.REACT_APP_GOOGLE_MAPS_EMBED_API_KEY}`
 
-const EVENT_URL = 'http://localhost:3000/api/v1/events/'
+//const EVENT_URL = 'http://localhost:3000/api/v1/events/'
 
 class EventCard extends Component {
 

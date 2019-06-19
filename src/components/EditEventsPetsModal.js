@@ -3,7 +3,7 @@ import Select from "react-dropdown-select"
 
 //Semantic
 import 'semantic-ui-css/semantic.min.css'
-import { Button, Header, Icon, Modal, Form } from 'semantic-ui-react'
+import { Button, Header, Modal, Form } from 'semantic-ui-react'
 
 const PETS_URL = 'http://localhost:3000/api/v1/pets'
 

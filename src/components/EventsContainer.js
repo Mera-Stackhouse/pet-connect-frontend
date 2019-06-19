@@ -10,10 +10,10 @@ import CreateEventModal from './CreateEventModal'
 
 //Semantic
 import 'semantic-ui-css/semantic.min.css'
-import { Grid, Menu, Segment, Button } from 'semantic-ui-react'
+import { Grid, Menu, Segment } from 'semantic-ui-react'
 
 //Fetch URL
-const USER_URL = 'http://localhost:3000/api/v1/users/'
+// const USER_URL = 'http://localhost:3000/api/v1/users/'
 const EVENT_URL = 'http://localhost:3000/api/v1/events'
 
 

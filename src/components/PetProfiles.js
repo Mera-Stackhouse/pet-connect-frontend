@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import CreatePetModal from './CreatePetModal'
-import EditPetModal from './EditPetModal'
+// import EditPetModal from './EditPetModal'
 import PetCard from './PetCard'
 
 //CSS
@@ -9,7 +9,7 @@ import '../css/Profile.css'
 
 //Semantic
 import 'semantic-ui-css/semantic.min.css'
-import { Image, Icon, Card, Modal, Button } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 
 const PET_URL = 'http://localhost:3000/api/v1/pets'
 
