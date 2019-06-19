@@ -22,12 +22,17 @@ class EventCard extends Component {
   getTime = () => {
 
     const date = new Date(this.props.event.start_time)
-    const hours = date.getHours()
+    let hours = date.getHours()
+    let m = "am"
+    if (hours > 12) {
+      hours = hours - 12
+      m = "pm"
+    }
     let minutes = date.getMinutes()
     if (minutes.toString().length < 2) {
       minutes = minutes + '0'
     }
-    return `At ${hours}:${minutes} am`
+    return `At ${hours}:${minutes} ${m}`
 
   }
 

@@ -17,7 +17,7 @@ class EditPetModal extends Component {
   componentDidMount() {
     this.setState({
       newPet: this.props.pet
-    }, () => console.log(this.state.newPet))
+    })
   }
 
   toggle = () => {
@@ -32,7 +32,7 @@ class EditPetModal extends Component {
         ...this.state.newPet,
         [ev.target.name]: ev.target.value
       }
-    }, () => console.log('pet', this.state.newPet))
+    })
   }
 
   handleSubmit = () => {

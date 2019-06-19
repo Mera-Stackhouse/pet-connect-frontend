@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Coiny|Fredoka+One|Titan+One&display=swap');
+
+
+.welcome {
+  font-family: 'Coiny', cursive;
+  font-size: 55px;
+}
+
+.mainContainer {
+  margin: auto;
+}
+
+.CenteredContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid purple;
+}

@@ -7,7 +7,7 @@ import '../css/Events.css'
 import 'semantic-ui-css/semantic.min.css'
 import { Menu } from 'semantic-ui-react'
 
-const EVENT_URL = 'http://localhost:3000/api/v1/events'
+// const EVENT_URL = 'http://localhost:3000/api/v1/events'
 
 class EventList extends Component {
 

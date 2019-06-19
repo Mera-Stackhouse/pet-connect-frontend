@@ -8,7 +8,7 @@ import PetProfiles from './PetProfiles'
 import '../css/Profile.css'
 
 //Fetch URL
-const USER_URL = 'http://localhost:3000/api/v1/users/'
+// const USER_URL = 'http://localhost:3000/api/v1/users/'
 
 class ProfileContainer extends Component {
 

@@ -24,6 +24,8 @@ class Login extends Component {
   handleClick = (e) => {
     // Prevents page reload
     //e.preventDefault();
+    
+    //OAuth takes a second to load and if the button is clicked too quickly then it is not ready and throws and error
     if (window.OAuth) {
       // Initializes OAuth.io with API key
       window.OAuth.initialize('kHem6s_qmpzHUGwxcu5VHFz0orc');
@@ -34,8 +36,8 @@ class Login extends Component {
         // Prompts 'welcome' message with User's name on successful login
         // Check console logs for additional User info
         provider.me().then((data) => {
-          console.log('name', data.raw.names[0].displayName);
-          console.log('data', data);
+          // console.log('name', data.raw.names[0].displayName);
+          // console.log('data', data);
           localStorage.setItem('email', data.email)
           localStorage.setItem('name', data.raw.names[0].displayName)
           //image?
