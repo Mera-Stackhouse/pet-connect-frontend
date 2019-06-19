@@ -117,7 +117,7 @@ class CreateEventModal extends Component {
 
   render(){
    return <Modal
-             trigger={<Button onClick={this.toggle}>Create a New Event</Button>}
+             trigger={<Button basic color='violet' onClick={this.toggle}>Create a New Event</Button>}
              open={this.state.open}
              onClose={this.toggle}
              closeIcon>
@@ -161,7 +161,7 @@ class CreateEventModal extends Component {
        <CreateEventsPetsModal users={this.state.newEvent.users} getPets={this.getPets}/>
      </Modal.Content>
      <Modal.Actions>
-       <Button onClick={this.handleSubmit} disabled={this.state.disabled}>
+       <Button basic color='violet' onClick={this.handleSubmit} disabled={this.state.disabled}>
          Submit
        </Button>
      </Modal.Actions>

@@ -4,6 +4,9 @@ import React, { Component } from 'react'
 import 'semantic-ui-css/semantic.min.css'
 import { Button } from 'semantic-ui-react'
 
+//CSS
+import '../css/Welcome.css'
+
 class Login extends Component {
 
   constructor(){
@@ -24,7 +27,7 @@ class Login extends Component {
   handleClick = (e) => {
     // Prevents page reload
     //e.preventDefault();
-    
+
     //OAuth takes a second to load and if the button is clicked too quickly then it is not ready and throws and error
     if (window.OAuth) {
       // Initializes OAuth.io with API key
@@ -71,9 +74,20 @@ class Login extends Component {
  }
 
   render() {
-    return <Button onClick={this.handleClick.bind(this)}>
-              Sign in with Google
-           </Button>;
+    return (
+      <div className='mainContainer'>
+        <div className='CenteredContainer'>
+          <h2 className='login'>
+            Hello, please sign in
+          </h2>
+        </div>
+        <div className='CenteredContainer'>
+          <Button basic color='violet' onClick={this.handleClick.bind(this)}>
+            Sign in with Google
+          </Button>
+        </div>
+      </div>
+    )
   }
 
 }

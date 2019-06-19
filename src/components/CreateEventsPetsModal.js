@@ -65,7 +65,7 @@ class CreateEventsPetsModal extends Component {
 
   render(){
    return <Modal
-             trigger={<Button onClick={() => {
+             trigger={<Button basic color='violet' onClick={() => {
                this.toggle()
                this.getUserIdArray()
              }}
@@ -94,7 +94,7 @@ class CreateEventsPetsModal extends Component {
        </Form>
      </Modal.Content>
      <Modal.Actions>
-       <Button onClick={() => {
+       <Button basic color='violet' onClick={() => {
          this.toggle()
          this.props.getPets(this.state.selectedPets) }
        }>

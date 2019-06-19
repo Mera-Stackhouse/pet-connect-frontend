@@ -1,11 +1,11 @@
 .ProfileContainer {
   margin: auto;
-  border: 1px solid purple;
+  /* border: 1px solid purple; */
   width: 80vh;
 }
 .userContainer {
   margin: auto;
-  border: 1px solid purple;
+  /* border: 1px solid purple; */
   display: flex;
   justify-content: center;
 
@@ -15,7 +15,7 @@
 .petsContainer {
   margin: auto;
   margin: 1em;
-  border: 1px solid purple;
+  /* border: 1px solid purple; */
 
 }
 
@@ -23,7 +23,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid purple;
+  /* border: 1px solid purple; */
   margin: 1em;
 }
 
@@ -31,6 +31,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid purple;
+  /* border: 1px solid purple; */
   margin: 0em;
 }

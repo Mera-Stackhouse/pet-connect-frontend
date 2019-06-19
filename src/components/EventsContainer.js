@@ -115,7 +115,7 @@ class EventsContainer extends Component {
       </div>
       {this.state.events.length === 0 ?
       <div className='CenteredContainer'>
-        <p>Loading!</p>
+        <p className='text2'>Loading!</p>
       </div>
       :
       <Grid>

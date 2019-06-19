@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Coiny|Fredoka+One|Titan+One&display=swap');
+
+
+.navbar {
+  font-family: 'Coiny', cursive;
+  font-size: 40px;
+  /* color: rgb(78, 38, 178); */
+  color: rgb(92, 57, 185);
+}
+
+#purple {
+  color: #9D79BC;
+}
+
+
+
 .main {
   margin: 1em;
 }
@@ -5,7 +21,7 @@
 .center {
   margin: auto;
   width: 80vh;
-  border: 1px solid purple;
+  /* border: 1px solid purple; */
   padding: 10px;
   display: flex;
   align-items: center;

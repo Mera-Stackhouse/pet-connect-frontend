@@ -51,7 +51,7 @@ class EventCard extends Component {
       (
         <div className='EventCard' >
           <div className='EventTitle'>
-            <h2>{this.props.event.event_type} with</h2>
+            <h2 className='text1'>{this.props.event.event_type} with</h2>
           </div>
 
           <div className='CenteredContainer'>

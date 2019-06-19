@@ -3,10 +3,10 @@ import React, { Component } from 'react'
 //CSS
 import '../css/NavBar.css'
 
-import { Link } from "react-router-dom"
+import { Link, withRouter } from "react-router-dom"
 
 //Semantic
-import 'semantic-ui-css/semantic.min.css'
+//import 'semantic-ui-css/semantic.min.css'
 import { Button, Icon } from 'semantic-ui-react'
 
 class NavBar extends Component {
@@ -18,11 +18,19 @@ class NavBar extends Component {
     }
   }
 
+  handleLogout = () => {
+    this.props.history.push('/')
+    this.props.logout()
+  }
+
   render(){
     return (
       // add Banner
       <div className='main'>
       <div className='center'>
+        <div className='main'>
+          <h1 className='navbar'>P</h1>
+        </div>
         <Button basic color='violet' animated size='huge' as={Link} to='/events'>
           <Button.Content visible>
             <Icon name='calendar alternate outline' />
@@ -47,7 +55,7 @@ class NavBar extends Component {
             Profile
           </Button.Content>
         </Button>
-        <Button basic color='violet' animated size='huge' onClick={this.props.logout}>
+        <Button basic color='violet' animated size='huge' onClick={this.handleLogout}>
           <Button.Content visible>
             <Icon name='log out' />
           </Button.Content>
@@ -61,4 +69,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar
+export default withRouter(NavBar)
