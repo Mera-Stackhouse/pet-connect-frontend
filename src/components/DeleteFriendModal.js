@@ -9,7 +9,7 @@ import { Button, Header, Modal} from 'semantic-ui-react'
 const RELATIONSHIPS_URL = 'http://localhost:3000/api/v1/user_relationships'
 
 
-class AddFriendModal extends Component {
+class DeleteFriendModal extends Component {
   constructor() {
     super()
     this.state = {
@@ -39,19 +39,12 @@ class AddFriendModal extends Component {
       disabled: true,
       open: false
     })
-    fetch(RELATIONSHIPS_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      },
-      body: JSON.stringify({
-        'follower_id': this.props.currentUser.id,
-        'followed_id': this.props.user.id
-      })
+    fetch(RELATIONSHIPS_URL + '/' + ?????, {
+      method: 'DELETE',
     })
     .then(resp => resp.json())
     .then(data => {
+      console.log('data', data)
       this.props.handleAddFriend(data.followed_id)
     })
 
@@ -75,17 +68,17 @@ class AddFriendModal extends Component {
              open={this.state.open}
              onClose={this.toggle}
              closeIcon>
-     <Header icon='add' color='violet' content='Send a Friend Request' />
+     <Header icon='add' color='violet' content='Unfriend' />
      <Modal.Content>
-      <p>to {this.props.user.name}?</p>
+      <p>{this.props.user.name}?</p>
      </Modal.Content>
      <Modal.Actions>
        <Button basic color='violet' onClick={this.handleSubmit} disabled={this.state.disabled}>
-         Send
+         Unfriend
        </Button>
      </Modal.Actions>
    </Modal>
   }
 }
 
-export default AddFriendModal
+export default DeleteFriendModal

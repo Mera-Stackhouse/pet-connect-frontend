@@ -15,7 +15,7 @@ class UserCard extends Component {
         <div className='imgContainer'>
           <Image src={this.props.user.img_url} rounded size='tiny' />
         </div>
-          <AddFriendModal user={this.props.user} currentUser={this.props.currentUser} />
+          <AddFriendModal user={this.props.user} currentUser={this.props.currentUser} handleAddFriend={this.props.handleAddFriend} />
       </div>
       <div className='userContainer'>
         <div className='nameContainer'>

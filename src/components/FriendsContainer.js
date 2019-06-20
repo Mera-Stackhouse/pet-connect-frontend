@@ -51,7 +51,7 @@ class FriendsContainer extends Component {
     let otherUsers = this.state.allUsers.filter(u => u.id !== this.props.user.id)
     otherUsers = otherUsers.filter(u => !this.state.friendIds.includes(u.id))
     return otherUsers.map(u => {
-      return <UserCard key={u.id} user={u} currentUser={this.props.user}/>
+      return <UserCard key={u.id} user={u} currentUser={this.props.user} handleAddFriend={this.handleAddFriend}/>
     })
   }
 
@@ -62,6 +62,19 @@ class FriendsContainer extends Component {
     return friends.map(f => {
       return <FriendCard key={f.id} user={f} />
     })
+  }
+
+  handleAddFriend = (userId) => {
+    this.setState({
+      friendIds: [userId, ...this.state.friendIds]
+    })
+  }
+
+  handleDeleteFriend = (userId) => {
+    // const otherFriends = this.state.friendIds.filter(id => id !== userId)
+    // this.setState({
+    //   friendIds: otherFriends
+    // })
   }
 
   render(){
