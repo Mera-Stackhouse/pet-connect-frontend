@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import 'semantic-ui-css/semantic.min.css'
 import { Image, Button } from 'semantic-ui-react'
 
-class UserCard extends Component {
+class FriendCard extends Component {
 
 
   render(){
@@ -13,7 +13,7 @@ class UserCard extends Component {
         <div className='imgContainer'>
           <Image src={this.props.user.img_url} rounded size='tiny' />
         </div>
-        <Button basic circular icon='add' color='violet'/>
+        <Button basic circular icon='checkmark' color='violet'/>
       </div>
       <div className='userContainer'>
         <div className='nameContainer'>
@@ -25,4 +25,4 @@ class UserCard extends Component {
   }
 }
 
-export default UserCard
+export default FriendCard

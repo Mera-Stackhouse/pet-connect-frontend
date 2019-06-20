@@ -11,7 +11,7 @@ class ProfileInfo extends Component {
 
   render(){
     return (
-    <div className='userContainer'>
+    <div className='mainUserContainer'>
       <div className='imgContainer'>
         <Image src={this.props.user.img_url} rounded size='small' />
       </div>

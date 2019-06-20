@@ -3,12 +3,11 @@
   /* border: 1px solid purple; */
   width: 80vh;
 }
-.userContainer {
+.mainUserContainer {
   margin: auto;
   /* border: 1px solid purple; */
   display: flex;
   justify-content: center;
-
 }
 
 

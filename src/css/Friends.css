@@ -1,5 +1,38 @@
 .FriendsContainer {
   margin: auto;
-  /* border: 1px solid purple; */
+  display: block;
+  border: 1px solid purple;
   width: 50%;
+
+}
+
+.leftColumn {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  float: left;
+  width: 50%;
+}
+
+.rightColumn {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  float: right;
+  width: 50%;
+}
+
+.allUsersList {
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid purple;
+
+}
+
+.userContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid purple;
 }
