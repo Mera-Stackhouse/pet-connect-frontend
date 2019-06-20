@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-import AddFriendModal from './AddFriendModal'
+import AcceptReqModal from './AcceptReqModal'
 
 //Semantic
 import 'semantic-ui-css/semantic.min.css'
 import { Image } from 'semantic-ui-react'
 
-class UserCard extends Component {
+class ReceivedCard extends Component {
 
 
   render(){
@@ -15,7 +15,7 @@ class UserCard extends Component {
         <div className='imgContainer'>
           <Image src={this.props.user.img_url} rounded size='tiny' />
         </div>
-          <AddFriendModal user={this.props.user} currentUser={this.props.currentUser} handleSendRequest={this.props.handleSendRequest} />
+          <AcceptReqModal user={this.props.user} currentUser={this.props.currentUser} handleAcceptReq={this.props.handleAcceptReq} />
       </div>
       <div className='userContainer'>
         <div className='nameContainer'>
@@ -27,7 +27,7 @@ class UserCard extends Component {
   }
 }
 
-export default UserCard
+export default ReceivedCard
 
 
   // <Button basic circular icon='add' color='violet'/>

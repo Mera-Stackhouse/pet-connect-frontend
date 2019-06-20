@@ -12,13 +12,13 @@ import '../css/Profile.css'
 
 class ProfileContainer extends Component {
 
-  constructor(props){
-    super(props)
-    this.state = {
-      user: {}
-    }
-  }
-  //
+  // constructor(props){
+  //   super(props)
+  //   this.state = {
+  //     user: {}
+  //   }
+  // }
+  // //
   // handleFetch = (newUser) => {
   //   fetch(USER_URL, {
   //     method: 'PATCH',

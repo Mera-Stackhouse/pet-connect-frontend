@@ -32,7 +32,8 @@ class EditEventModal extends Component {
     })
   }
 
-
+// this is where i should separate these guys and make it not async
+// put incot component will mount and keep the second part in this one and try again
   async componentDidMount() {
     await this.setState({
       newEvent: this.props.event,

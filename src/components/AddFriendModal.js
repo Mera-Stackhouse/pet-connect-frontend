@@ -16,14 +16,6 @@ class AddFriendModal extends Component {
       open: false,
       disabled: false
     }
-
-    // fetch(USER_URL)
-    // .then(resp => resp.json())
-    // .then(data => {
-    //   this.setState({
-    //     users: data
-    //   })
-    // })
   }
 
   toggle = () => {
@@ -52,21 +44,8 @@ class AddFriendModal extends Component {
     })
     .then(resp => resp.json())
     .then(data => {
-      this.props.handleAddFriend(data.followed_id, data.id)
+      this.props.handleSendRequest(data.followed_id, data.id)
     })
-
-    // await this.setState({
-    //   newEvent: {
-    //     ...this.state.newEvent,
-    //     'start_time': this.state.date + 'T' + this.state.time + ":00.000-0800"
-    //   }
-    // })
-    //
-    // this.setState({
-    //   open: false
-    // })
-    //
-    // this.props.newEventFetch(this.state.newEvent)
   }
 
   render(){

@@ -14,7 +14,6 @@ class ProfileModal extends Component {
   }
 
   componentDidMount() {
-    console.log('here', this.props.user)
     this.setState({
       newUser: this.props.user
     })
