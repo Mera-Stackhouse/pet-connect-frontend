@@ -31,7 +31,7 @@ class App extends Component {
   setCurrentUser = (user) => {
     this.setState({
       user: user
-    }, () => console.log('user obj', this.state.user))
+    })
   }
 
   handleCreateEvent = () => {

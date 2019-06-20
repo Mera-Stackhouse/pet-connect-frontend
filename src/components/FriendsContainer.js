@@ -107,7 +107,9 @@ class FriendsContainer extends Component {
             {this.state.users && this.state.friends ?
               this.getUsers()
             :
-              <p className='text2'>Loading!</p>}
+              <div className='CenteredContainerNoMargin'>
+                <p className='text2'>Loading!</p>
+              </div>}
         </div>
       </div>
       <div className='rightColumn'>
@@ -119,7 +121,9 @@ class FriendsContainer extends Component {
             {this.state.users && this.state.friends ?
               this.getFriends()
             :
-              <p className='text2'>Loading!</p>}
+              <div className='CenteredContainerNoMargin'>
+                <p className='text2'>Loading!</p>
+              </div>}
         </div>
       </div>
     </div>

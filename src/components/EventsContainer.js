@@ -25,7 +25,7 @@ class EventsContainer extends Component {
       events: [],
       activeItem: ''
     }
-    this.props.user.events.map(e => {
+    this.props.user.events.forEach(e => {
       fetch(EVENT_URL + '/' + e.id)
       .then(resp => resp.json())
       .then(data => {

@@ -5,10 +5,6 @@ import 'semantic-ui-css/semantic.min.css'
 import { Button, Header, Modal} from 'semantic-ui-react'
 
 
-//Fetch URL
-const DEFRIEND_URL = 'http://localhost:3000/api/v1/relationships'
-
-
 class DeleteFriendModal extends Component {
   constructor() {
     super()
