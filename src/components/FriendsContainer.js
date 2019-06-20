@@ -51,7 +51,7 @@ class FriendsContainer extends Component {
     let otherUsers = this.state.allUsers.filter(u => u.id !== this.props.user.id)
     otherUsers = otherUsers.filter(u => !this.state.friendIds.includes(u.id))
     return otherUsers.map(u => {
-      return <UserCard key={u.id} user={u}/>
+      return <UserCard key={u.id} user={u} currentUser={this.props.user}/>
     })
   }
 

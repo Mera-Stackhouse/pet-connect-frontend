@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 
+import AddFriendModal from './AddFriendModal'
+
 //Semantic
 import 'semantic-ui-css/semantic.min.css'
-import { Image, Button } from 'semantic-ui-react'
+import { Image } from 'semantic-ui-react'
 
 class UserCard extends Component {
 
@@ -13,7 +15,7 @@ class UserCard extends Component {
         <div className='imgContainer'>
           <Image src={this.props.user.img_url} rounded size='tiny' />
         </div>
-        <Button basic circular icon='add' color='violet'/>
+          <AddFriendModal user={this.props.user} currentUser={this.props.currentUser} />
       </div>
       <div className='userContainer'>
         <div className='nameContainer'>
@@ -26,3 +28,6 @@ class UserCard extends Component {
 }
 
 export default UserCard
+
+
+  // <Button basic circular icon='add' color='violet'/>
