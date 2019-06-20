@@ -52,7 +52,7 @@ class AddFriendModal extends Component {
     })
     .then(resp => resp.json())
     .then(data => {
-      this.props.handleAddFriend(data.followed_id)
+      this.props.handleAddFriend(data.followed_id, data.id)
     })
 
     // await this.setState({

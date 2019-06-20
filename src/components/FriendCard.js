@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 
+import DeleteFriendModal from './DeleteFriendModal'
+
 //Semantic
 import 'semantic-ui-css/semantic.min.css'
-import { Image, Button } from 'semantic-ui-react'
+import { Image } from 'semantic-ui-react'
 
 class FriendCard extends Component {
 
@@ -13,7 +15,7 @@ class FriendCard extends Component {
         <div className='imgContainer'>
           <Image src={this.props.user.img_url} rounded size='tiny' />
         </div>
-        <Button basic circular icon='checkmark' color='violet'/>
+        <DeleteFriendModal user={this.props.user} handleDeleteFriend={this.props.handleDeleteFriend} />
       </div>
       <div className='userContainer'>
         <div className='nameContainer'>

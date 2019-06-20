@@ -8,6 +8,7 @@ import '../css/Friends.css'
 
 const USER_URL = 'http://localhost:3000/api/v1/users'
 const FRIENDS_URL = 'http://localhost:3000/api/v1/users/friends/'
+const RELATIONSHIPS_URL = 'http://localhost:3000/api/v1/user_relationships/'
 
 class FriendsContainer extends Component {
 
@@ -17,7 +18,8 @@ class FriendsContainer extends Component {
       allUsers: null,
       friendIds: null,
       friends: false,
-      users: false
+      users: false,
+      relationshipId: null
     }
 
     fetch(USER_URL)
@@ -36,8 +38,10 @@ class FriendsContainer extends Component {
     fetch(FRIENDS_URL + '/' + this.props.user.id)
     .then(resp => resp.json())
     .then(data => {
+      const friends = data.map(e => e[1])
       this.setState({
-        friendIds: data
+        relationshipId: data,
+        friendIds: friends
       })
     })
     .then(() => {
@@ -60,21 +64,36 @@ class FriendsContainer extends Component {
     friends = friends.filter(f => this.state.friendIds.includes(f.id))
 
     return friends.map(f => {
-      return <FriendCard key={f.id} user={f} />
+      return <FriendCard key={f.id} user={f} handleDeleteFriend={this.handleDeleteFriend}/>
     })
   }
 
-  handleAddFriend = (userId) => {
+  handleAddFriend = (userId, shipId) => {
     this.setState({
-      friendIds: [userId, ...this.state.friendIds]
+      friendIds: [userId, ...this.state.friendIds],
+      relationshipId: [...this.state.relationshipId, [shipId, userId]]
     })
   }
 
   handleDeleteFriend = (userId) => {
-    // const otherFriends = this.state.friendIds.filter(id => id !== userId)
-    // this.setState({
-    //   friendIds: otherFriends
-    // })
+    const relationship = this.state.relationshipId.filter(id => id[1] === userId)
+    const id = relationship[0][0]
+    fetch(RELATIONSHIPS_URL + '/' + id, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      }
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      const friends = this.state.friendIds.filter(id => id !== userId)
+      const ids = this.state.relationshipId.filter(id => id[1] !== userId)
+      this.setState({
+        friendIds: friends,
+        relationshipId: ids
+      })
+    })
   }
 
   render(){
