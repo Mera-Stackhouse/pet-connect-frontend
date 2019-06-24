@@ -48,14 +48,14 @@ class EventsContainer extends Component {
   //
   //
   // }
-
-  fetchEvent = (e) => {
-
-  }
-
-  orderEvents = () => {
-
-  }
+  // 
+  // fetchEvent = (e) => {
+  //
+  // }
+  //
+  // orderEvents = () => {
+  //
+  // }
 
   editEventFetch = (event) => {
     fetch(EVENT_URL + '/' + event.id, {

@@ -10,11 +10,12 @@ import Select from "react-dropdown-select"
 
 //Fetch URL
 const USER_URL = 'http://localhost:3000/api/v1/users/'
+const FRIENDS_URL = 'http://localhost:3000/api/v1/users/friends'
 
 
 class CreateEventModal extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       open: false,
       newEvent: {
@@ -22,16 +23,35 @@ class CreateEventModal extends Component {
         pets: []
       },
       users: [],
-      disabled: false
+      disabled: false,
+      friendIds: null,
+      friends: []
     }
 
-    fetch(USER_URL)
+    this.fetchFunction()
+  }
+
+  fetchFunction =  async () => {
+    await fetch(USER_URL)
     .then(resp => resp.json())
     .then(data => {
       this.setState({
         users: data
       })
     })
+
+    await fetch(FRIENDS_URL + '/' + this.props.user.id)
+    .then(resp => resp.json())
+    .then(data => {
+      this.setState({
+        friendIds: data.friends.map(f => f[1])
+      })
+    })
+
+    const friends = this.state.users.filter(u => this.state.friendIds.includes(u.id))
+    this.setState({
+      friends: friends
+    }, () =>  console.log(this.state.friends))
   }
 
   toggle = () => {
@@ -43,8 +63,6 @@ class CreateEventModal extends Component {
   }
 
   handleChange = (ev) => {
-    console.log('name', ev.target.name)
-    console.log('values', ev.target.value)
     this.setState({
       newEvent: {
         ...this.state.newEvent,
@@ -140,7 +158,7 @@ class CreateEventModal extends Component {
          <Form.Field>
            <label>Users</label>
            <Select
-            options={this.state.users.filter(u => u.id !== this.props.user.id)}
+            options={this.state.friends}
             valueField='name'
             keepSelectedInList={false}
             name='users'

@@ -151,7 +151,7 @@ class FriendsContainer extends Component {
 
     const newReceived = this.state.received.filter(u => u[1] !== userId)
     const newReceivedIds = this.state.receivedIds.filter(id => id !== userId)
-    
+
     const newFriends = [...this.state.friends, user]
     const newFriendIds = [...this.state.friendIds, userId]
 
