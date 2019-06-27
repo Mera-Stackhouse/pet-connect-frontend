@@ -1,68 +1,44 @@
+# PetConnect
+
+React frontend of PetConnect, a social media app to connect with other pet owners and plan pet play dates!
+(Add Gif here)
+
+## Demo and Live Site
+
+* [Vimeo demo](vimeo.com)
+
+* Go to <ADD LINK> and use a Google account to sign in. You will automatically have a few friends seeded. You can add your pets, edit your profile, and create events with your friends.
+
+
+## Installation
+* If you would like to use this repo locally, it needs a backend, which you can find [here](https://github.com/Mera-Stackhouse/pet-connect-backend)
+* Clone down this repo
+* Links for the fetch requests are declared as constants with the \_URL suffix at the top of components under all import statements. Please change these to connect to the port the API backend is using.
+
+## Features
+* Log in with your Google account using OAuth. If you have never logged in before, a new PetConnect account will be created for you.
+* View and edit your profile.
+* Add, edit, and remove your pets.
+* Set up events with your fellow pet owners, including choosing the participating pets and the location.
+
+## Technologies
+* OAuth using OAuth.io
+* Semantic UI
+
+## Credits
+
+* Joe Yang, for CSS tips
+* Thank you to the following Stack Overflows and docs for helping me out:
+  * https://stackoverflow.com/questions/52668940/hiding-api-key-in-react
+  * https://www.w3schools.com/js/js_date_methods.asp
+  * https://github.com/Semantic-Org/Semantic-UI/issues/3459
+  * https://stackoverflow.com/questions/17217766/two-divs-side-by-side-fluid-display
+  * https://stackoverflow.com/questions/7560832/how-to-center-a-button-within-a-div
+
+## License
+
+* Under the [MIT License](docs/LICENSE.md)
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
