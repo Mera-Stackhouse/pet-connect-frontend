@@ -15,7 +15,7 @@ React frontend of PetConnect, a social media app to connect with other pet owner
 * Clone down this repo
 * Links for the fetch requests are declared as constants with the \_URL suffix at the top of components under all import statements. Please change these to connect to the port the API backend is using.
 
-## Features
+## Features of PetConnect
 * Log in with your Google account using OAuth. If you have never logged in before, a new PetConnect account will be created for you.
 * View and edit your profile.
 * Add, edit, and remove your pets.
@@ -24,6 +24,7 @@ React frontend of PetConnect, a social media app to connect with other pet owner
 ## Technologies
 * OAuth using OAuth.io
 * Semantic UI
+* Google Maps Embed API
 
 ## Credits
 
