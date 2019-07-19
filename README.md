@@ -3,9 +3,9 @@
 React frontend of PetConnect, a social media app to connect with other pet owners and plan pet play dates!
 (Add Gif here)
 
-## Demo and Live Site
-
-* [Vimeo demo](vimeo.com)
+## Demo
+![Pet Connect Screenshot](public/pet_connect_screenshot.png)
+[Vimeo demo](https://vimeo.com/349003287)
 
 * Go to <ADD LINK> and use a Google account to sign in. You will automatically have a few friends seeded. You can add your pets, edit your profile, and create events with your friends.
 
@@ -14,6 +14,7 @@ React frontend of PetConnect, a social media app to connect with other pet owner
 * If you would like to use this repo locally, it needs a backend, which you can find [here](https://github.com/Mera-Stackhouse/pet-connect-backend)
 * Clone down this repo
 * Links for the fetch requests are declared as constants with the \_URL suffix at the top of components under all import statements. Please change these to connect to the port the API backend is using.
+* Start the server with ```npm start```
 
 ## Features of PetConnect
 * Log in with your Google account using OAuth. If you have never logged in before, a new PetConnect account will be created for you.
