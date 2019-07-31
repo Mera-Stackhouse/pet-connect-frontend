@@ -52,8 +52,13 @@ class EventCard extends Component {
 
     let hours = date.getHours()
     let m = "am"
+    console.log('hours', hours)
     if (hours > 12) {
       hours = hours - 12
+      m = "pm"
+    } else if (hours === 0) {
+      hours = 12
+    } else if (hours === 12) {
       m = "pm"
     }
     let minutes = date.getMinutes()

@@ -48,7 +48,7 @@ class EventsContainer extends Component {
   //
   //
   // }
-  // 
+  //
   // fetchEvent = (e) => {
   //
   // }
@@ -108,12 +108,16 @@ class EventsContainer extends Component {
   }
 
   handleDelete = (event) => {
-    console.log('here')
+    console.log('deleting at this url:', EVENT_URL + '/' + event.id)
     fetch(EVENT_URL + '/' + event.id, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
     })
-    .then(resp => resp.json())
-    .then(data => {
+    //.then(resp => resp.json())
+    .then(() => {
       const events = this.state.events.filter(e => e.id !== event.id)
       const sortedEvents = events.sort((a, b) => {return new Date(a.start_time).getTime() - new Date(b.start_time).getTime()})
       this.setState({

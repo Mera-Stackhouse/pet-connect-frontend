@@ -33,7 +33,7 @@ class EditEventModal extends Component {
   }
 
 // this is where i should separate these guys and make it not async
-// put incot component will mount and keep the second part in this one and try again
+// put component will mount and keep the second part in this one and try again
   async componentDidMount() {
     await this.setState({
       newEvent: this.props.event,
@@ -54,11 +54,12 @@ class EditEventModal extends Component {
   }
 
   handleSubmit = async () => {
+    console.log('this time is saving in pst:', this.state.time)
     await this.setState({
       open: false,
       newEvent: {
         ...this.state.newEvent,
-        start_time: this.state.date + "T" + this.state.time + ':00.000-0800'
+        start_time: this.state.date + "T" + this.state.time + ':00.000-0700'
       }
     }, () => console.log(this.state.newEvent))
 
