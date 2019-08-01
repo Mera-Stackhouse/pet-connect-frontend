@@ -14,15 +14,20 @@ class EditPetModal extends Component {
     }
   }
 
-  componentDidMount() {
-    this.setState({
-      newPet: this.props.pet
-    })
-  }
+  // static getDerivedStateFromProps(props, state) {
+  //   if (state.newPet == {}) {
+  //     return {
+  //       newPet: props.pet,
+  //     }
+  //   }
+  //   return null
+  // }
 
+  // fix the second opening of the modal bug
   toggle = () => {
     this.setState({
-      open: !this.state.open
+      open: !this.state.open,
+      newPet: this.props.pet
     })
   }
 
